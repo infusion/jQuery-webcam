@@ -14,6 +14,8 @@
 
     var webcam = {
 
+	id: null,
+
 	width: 320,
 	height: 240,
 
@@ -41,7 +43,13 @@
 	    }
 	}
 
-	this.append('<object id="webcam-object" type="application/x-shockwave-flash" data="'+webcam.swffile+'" width="'+webcam.width+'" height="'+webcam.height+'"><param name="movie" value="'+webcam.swffile+'" /><param name="FlashVars" value="mode='+webcam.mode+'&amp;quality='+webcam.quality+'" /></object>');
+	var source = '<object id="webcam-object" type="application/x-shockwave-flash" data="'+webcam.swffile+'" width="'+webcam.width+'" height="'+webcam.height+'"><param name="movie" value="'+webcam.swffile+'" /><param name="FlashVars" value="mode='+webcam.mode+'&amp;quality='+webcam.quality+'" /></object>';
+
+	if (null !== webcam.id) {
+	    $(webcam.id).html(source);
+	} else {
+	    this.append(source);
+	}
 
 	(_register = function(run) {
 
