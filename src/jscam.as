@@ -54,6 +54,19 @@ class JSCam {
 
 		if (null != camera) {
 
+			// http://www.adobe.com/support/flash/action_scripts/actionscript_dictionary/actionscript_dictionary133.html
+			camera.onStatus = function(info:Object) {
+
+			    switch (info.code) {
+			    case 'Camera.Muted':
+				ExternalInterface.call('webcam.debug', "notify", "Camera stopped");
+				break;
+			    case 'Camera.Unmuted' :
+				ExternalInterface.call('webcam.debug', "notify", "Camera started");
+				break;
+			    }
+			}
+
 			camera.setQuality(0, 100);
 			camera.setMode(Stage.width, Stage.height, 24, false);
 
@@ -83,7 +96,7 @@ class JSCam {
 			}
 
 			buffer = new BitmapData(Stage.width, Stage.height);
-			ExternalInterface.call('webcam.debug', "notify", "Capturing started." + mode);
+			ExternalInterface.call('webcam.debug', "notify", "Capturing started.");
 
 			if ("stream" == mode) {
 				_stream();
