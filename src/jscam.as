@@ -196,7 +196,7 @@ class JSCam {
 
 					var doc = new XML();
 					doc.onLoad = function(success) {
-						ExternalInterface.call("webcam.onSave", "done");
+                        ExternalInterface.call("webcam.onSave", "done", this.toString());
 					}
 
 					sal.sendAndLoad(file, doc);
