@@ -148,7 +148,15 @@ class JSCam {
 			camera = Camera.get(id);
 			camera.setQuality(0, 100);
 			camera.setMode(Stage.width, Stage.height, 24, false);
+
+                        _root.removeMovieClip();
+                        _root.attachMovie("clip", "video", 1);
+                        _root.video.attachVideo(camera);
+                        _root.video._x = 0;
+                        _root.video._y = 0;
+
 			return true;
+
 		}
 		return false;
 	}
