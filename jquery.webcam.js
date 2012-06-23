@@ -1,14 +1,10 @@
 /**
-* jQuery webcam
-* Copyright (c) 2010, Robert Eisele (robert@xarg.org)
-* Dual licensed under the MIT or GPL Version 2 licenses.
-* Date: 09/12/2010
-*
-* @author Robert Eisele
-* @version 1.0
-*
-* @see http://www.xarg.org/project/jquery-webcam-plugin/
-**/
+ * @license jQuery webcam plugin v1.0 09/12/2010
+ * http://www.xarg.org/project/jquery-webcam-plugin/
+ *
+ * Copyright (c) 2010, Robert Eisele (robert@xarg.org)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ **/
 
 (function ($) {
 
