@@ -74,6 +74,9 @@ class JSCam {
 
 			ExternalInterface.addCallback("save", null, save);
 
+			ExternalInterface.addCallback("pauseCamera", null, pauseCamera);
+			ExternalInterface.addCallback("resumeCamera", null, resumeCamera);
+
 			ExternalInterface.addCallback("setCamera", null, setCamera);
 			ExternalInterface.addCallback("getCameraList", null, getCameraList);
 
@@ -86,6 +89,13 @@ class JSCam {
 			ExternalInterface.call('webcam.debug', "error", "No camera was detected.");
 		}
 	}
+	public static function pauseCamera():Void {
+		_root.video.attachVideo(null);
+	}
+	public static function resumeCamera():Void {
+		_root.video.attachVideo(camera);
+	}
+
 
 	public static function capture(time:Number):Boolean {
 
