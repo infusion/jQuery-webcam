@@ -52,7 +52,7 @@
 
 	    var cam = document.getElementById('XwebcamXobjectX');
 
-	    if (cam.capture !== undefined) {
+	    if (cam && cam.capture !== undefined) {
 
 		/* Simple callback methods are not allowed :-/ */
 		webcam.capture = function(x) {
