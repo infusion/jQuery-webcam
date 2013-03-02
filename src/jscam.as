@@ -20,6 +20,7 @@ class JSCam {
 	private static var camera:Camera = null;
 	private static var buffer:BitmapData = null;
 	private static var quality:Number = 85;
+	private static var webcam:String = "webcam";
 	private static var interval = null;
 	private static var stream = null;
 	private static var mode = "callback";
@@ -31,7 +32,7 @@ class JSCam {
 		if (_root.mode) {
 			mode = _root.mode;
 		} else {
-			ExternalInterface.call('webcam.debug', "error", "No camera mode present, falling back...");
+			ExternalInterface.call(webcam + '.debug', "error", "No camera mode present, falling back...");
 		}
 
 		if (_root.quality) {
@@ -59,10 +60,10 @@ class JSCam {
 
 			    switch (info.code) {
 			    case 'Camera.Muted':
-				ExternalInterface.call('webcam.debug', "notify", "Camera stopped");
+				ExternalInterface.call(JSCam.webcam + '.debug', "notify", "Camera stopped");
 				break;
 			    case 'Camera.Unmuted' :
-				ExternalInterface.call('webcam.debug', "notify", "Camera started");
+				ExternalInterface.call(JSCam.webcam + '.debug', "notify", "Camera started");
 				break;
 			    }
 			}
@@ -83,7 +84,7 @@ class JSCam {
 			_root.video._y = 0;
 
 		} else {
-			ExternalInterface.call('webcam.debug', "error", "No camera was detected.");
+			ExternalInterface.call(webcam + '.debug', "error", "No camera was detected.");
 		}
 	}
 
@@ -96,10 +97,10 @@ class JSCam {
 			}
 
 			buffer = new BitmapData(Stage.width, Stage.height);
-			ExternalInterface.call('webcam.debug', "notify", "Capturing started.");
+			ExternalInterface.call(webcam + '.debug', "notify", "Capturing started.");
 
 			if ("stream" == mode) {
-				_stream();
+				_stream(webcam);
 				return true;
 			}
 
@@ -109,7 +110,7 @@ class JSCam {
 				time = 10;
 			}
 
-			_capture(time + 1);
+			_capture(time + 1, webcam);
 
 			return true;
 		}
@@ -124,11 +125,11 @@ class JSCam {
 
 		if (0 == time) {
 			buffer.draw(_root.video);
-			ExternalInterface.call('webcam.onCapture');
-			ExternalInterface.call('webcam.debug', "notify", "Capturing finished.");
+			ExternalInterface.call(webcam + '.onCapture');
+			ExternalInterface.call(webcam + '.debug', "notify", "Capturing finished.");
 		} else {
-			ExternalInterface.call('webcam.onTick', time - 1);
-			interval = setInterval(_capture, 1000, time - 1);
+			ExternalInterface.call(webcam + '.onTick', time - 1);
+			interval = setInterval(_capture, 1000, time - 1, webcam);
 		}
 	}
 
@@ -178,7 +179,7 @@ class JSCam {
 						row+= buffer.getPixel(j, i);
 						row+= ";";
 					}
-					ExternalInterface.call("webcam.onSave", row);
+					ExternalInterface.call(webcam + ".onSave", row);
 				}
 
 			} else if ("save" == mode) {
@@ -196,21 +197,21 @@ class JSCam {
 
 					var doc = new XML();
 					doc.onLoad = function(success) {
-                        ExternalInterface.call("webcam.onSave", "done", this.toString());
+                        ExternalInterface.call(JSCam.webcam + ".onSave", "done", this.toString());
 					}
 
 					sal.sendAndLoad(file, doc);
 /*
-					ExternalInterface.call('webcam.debug', "error", "No save mode compiled in.");
+					ExternalInterface.call(webcam + '.debug', "error", "No save mode compiled in.");
 					return false;
 */
 				} else {
-					ExternalInterface.call('webcam.debug', "error", "No file name specified.");
+					ExternalInterface.call(webcam + '.debug', "error", "No file name specified.");
 					return false;
 				}
 
 			} else {
-				ExternalInterface.call('webcam.debug', "error", "Unsupported storage mode.");
+				ExternalInterface.call(webcam + '.debug', "error", "Unsupported storage mode.");
 			}
 
 			buffer = null;
@@ -235,9 +236,9 @@ class JSCam {
 				row+= buffer.getPixel(j, i);
 				row+= ";";
 			}
-			ExternalInterface.call("webcam.onSave", row);
+			ExternalInterface.call(webcam + ".onSave", row);
 		}
 
-		stream = setInterval(_stream, 10);
+		stream = setInterval(_stream, 10, webcam);
 	}
 }
