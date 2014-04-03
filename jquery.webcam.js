@@ -48,8 +48,8 @@
 	    this[webcam.append ? "append" : "html"](source);
 	}
 
-	(_register = function(run) {
-
+	var run = 3;
+	(_register = function() {
 	    var cam = document.getElementById('XwebcamXobjectX');
 
 	    if (cam && cam.capture !== undefined) {
@@ -90,9 +90,10 @@
 		webcam.debug("error", "Flash movie not yet registered!");
 	    } else {
 		/* Flash interface not ready yet */
-		window.setTimeout(_register, 1000 * (4 - run), run - 1);
+		run--;
+		window.setTimeout(_register, 1000 * (4 - run));
 	    }
-	})(3);
+	})();
     }
 
 })(jQuery);
