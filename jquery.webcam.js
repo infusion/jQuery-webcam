@@ -75,7 +75,16 @@
 			return cam.getCameraList();
 		    } catch(e) {}
 		}
-
+		webcam.pauseCamera = function() {
+		    try {
+			return cam.pauseCamera();
+		    } catch(e) {}
+		}		
+		webcam.resumeCamera = function() {
+		    try {
+			return cam.resumeCamera();
+		    } catch(e) {}
+		}
 		webcam.onLoad();
 	    } else if (0 == run) {
 		webcam.debug("error", "Flash movie not yet registered!");
