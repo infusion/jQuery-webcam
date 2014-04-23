@@ -1,5 +1,5 @@
 /**
- * @license jQuery webcam plugin v1.0 09/12/2010
+ * @license jQuery webcam plugin v1.0.0 09/12/2010
  * http://www.xarg.org/project/jquery-webcam-plugin/
  *
  * Copyright (c) 2010, Robert Eisele (robert@xarg.org)

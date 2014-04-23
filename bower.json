@@ -1,0 +1,26 @@
+{
+    "name": "webcam",
+    "main": "jquery.webcam.js",
+    "version": "1.0.0",
+    "homepage": "http://www.xarg.org/project/jquery-webcam-plugin/",
+    "description": "A webcam wrapper plugin for jQuery.",
+    "keywords": [
+        "webcam",
+        "camera",
+        "flash"
+    ],
+    "authors": [
+        "Robert Eisele <robert@xarg.org>"
+    ],
+    "dependencies": {
+        "jquery": ">=1.5"
+    },
+    "license": [
+        "MIT",
+        "GPL"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/infusion/jQuery-webcam.git"
+    }
+}
