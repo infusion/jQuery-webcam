@@ -11,10 +11,10 @@ Example
 
 Please note: The camera doesn't work if you have any dom-errors on your page!
 
+The Flash object will be embedded into the following Div:
 
 ```html
-
-
+<div id="webcam"></div>
 ```
 
 ```javascript
@@ -63,6 +63,7 @@ jQuery("#webcam").webcam({
 
 ```
 
+If you want to draw the picture onto a canvas, have a look at the source of the page on my blog, linked below.
 
 
 Further examples and documentation
