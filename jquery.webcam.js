@@ -10,27 +10,27 @@
 
     var webcam = {
 
-	extern: null, // external select token to support jQuery dialogs
-	append: true, // append object instead of overwriting
+	"extern": null, // external select token to support jQuery dialogs
+	"append": true, // append object instead of overwriting
 
-	width: 320,
-	height: 240,
+	"width": 320,
+	"height": 240,
 
-	mode: "callback", // callback | save | stream
+	"mode": "callback", // callback | save | stream
 
-	swffile: "jscam.swf",
-	quality: 85,
+	"swffile": "jscam.swf",
+	"quality": 85,
 
-	debug:	    function () {},
-	onCapture:  function () {},
-	onTick:	    function () {},
-	onSave:	    function () {},
-	onLoad:	    function () {}
+	"debug":	function () {},
+	"onCapture":	function () {},
+	"onTick":	function () {},
+	"onSave":	function () {},
+	"onLoad":	function () {}
     };
 
-    window.webcam = webcam;
+    window["webcam"] = webcam;
 
-    $.fn.webcam = function(options) {
+    $["fn"]["webcam"] = function(options) {
 
 	if (typeof options === "object") {
 	    for (var ndx in webcam) {
@@ -42,52 +42,52 @@
 
 	var source = '<object id="XwebcamXobjectX" type="application/x-shockwave-flash" data="'+webcam.swffile+'" width="'+webcam.width+'" height="'+webcam.height+'"><param name="movie" value="'+webcam.swffile+'" /><param name="FlashVars" value="mode='+webcam.mode+'&amp;quality='+webcam.quality+'" /><param name="allowScriptAccess" value="always" /></object>';
 
-	if (null !== webcam.extern) {
-	    $(webcam.extern)[webcam.append ? "append" : "html"](source);
+	if (null !== webcam["extern"]) {
+	    $(webcam["extern"])[webcam["append"] ? "append" : "html"](source);
 	} else {
-	    this[webcam.append ? "append" : "html"](source);
+	    this[webcam["append"] ? "append" : "html"](source);
 	}
 
 	var run = 3;
 	(_register = function() {
 	    var cam = document.getElementById('XwebcamXobjectX');
 
-	    if (cam && cam.capture !== undefined) {
+	    if (cam && cam["capture"] !== undefined) {
 
 		/* Simple callback methods are not allowed :-/ */
-		webcam.capture = function(x) {
+		webcam["capture"] = function(x) {
 		    try {
-			return cam.capture(x);
+			return cam["capture"](x);
 		    } catch(e) {}
 		}
-		webcam.save = function(x) {
+		webcam["save"] = function(x) {
 		    try {
-			return cam.save(x);
+			return cam["save"](x);
 		    } catch(e) {}
 		}
-		webcam.setCamera = function(x) {
+		webcam["setCamera"] = function(x) {
 		    try {
-			return cam.setCamera(x);
+			return cam["setCamera"](x);
 		    } catch(e) {}
 		}
-		webcam.getCameraList = function() {
+		webcam["getCameraList"] = function() {
 		    try {
-			return cam.getCameraList();
+			return cam["getCameraList"]();
 		    } catch(e) {}
 		}
-		webcam.pauseCamera = function() {
+		webcam["pauseCamera"] = function() {
 		    try {
-			return cam.pauseCamera();
+			return cam["pauseCamera"]();
 		    } catch(e) {}
 		}		
-		webcam.resumeCamera = function() {
+		webcam["resumeCamera"] = function() {
 		    try {
-			return cam.resumeCamera();
+			return cam["resumeCamera"]();
 		    } catch(e) {}
 		}
-		webcam.onLoad();
+		webcam["onLoad"]();
 	    } else if (0 == run) {
-		webcam.debug("error", "Flash movie not yet registered!");
+		webcam["debug"]("error", "Flash movie not yet registered!");
 	    } else {
 		/* Flash interface not ready yet */
 		run--;
