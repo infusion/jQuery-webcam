@@ -74,4 +74,5 @@ http://www.xarg.org/project/jquery-webcam-plugin/
 
 License
 ======
+Copyright (c) 2013, [Robert Eisele](http://www.xarg.org/)
 Dual licensed under the MIT or GPL Version 2 licenses.
