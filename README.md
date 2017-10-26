@@ -1,5 +1,7 @@
 jQuery Webcam Plugin
 ====================
+[![CDNJS version](https://img.shields.io/cdnjs/v/jQuery-webcam.svg)](https://cdnjs.com/libraries/jQuery-webcam)
+
 
 Description
 -----------
