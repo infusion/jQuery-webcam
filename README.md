@@ -72,9 +72,9 @@ Further examples and documentation
 ==========================
 For further details and code examples take a look at the demonstration and documentation page on:
 
-http://www.xarg.org/project/jquery-webcam-plugin/
+[https://raw.org/article/camara-support-in-html5-and-javascript/](https://raw.org/article/camara-support-in-html5-and-javascript/)
 
 License
 ======
-Copyright (c) 2013, [Robert Eisele](http://www.xarg.org/)
+Copyright (c) 2013, [Robert Eisele](https://raw.org/)
 Dual licensed under the MIT or GPL Version 2 licenses.
